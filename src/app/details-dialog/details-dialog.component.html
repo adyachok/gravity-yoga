@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Детали</h1>
+<div mat-dialog-content>
+  <p>{{ data.training.shortDescription }}</p>
+  <p><span class="text-solid">Преимущества: </span>{{ data.training.benefits }}</p>
+  <p><span class="text-solid">Недостатки: </span>{{ data.training.drawbacks }}</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="close()">ЗАКРЫТЬ</button>
+</div>

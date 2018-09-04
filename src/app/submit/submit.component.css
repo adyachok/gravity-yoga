@@ -1,0 +1,11 @@
+.report-form {
+  margin: auto;
+  text-align: center;
+  display: inline-flex;
+}
+.report-input {
+  padding: 1rem;
+}
+.g-recaptcha {
+  /*widht: 12rem;*/
+}

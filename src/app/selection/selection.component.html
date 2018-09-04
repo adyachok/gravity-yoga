@@ -1,0 +1,30 @@
+<mat-horizontal-stepper>
+  <mat-step>
+      <ng-template matStepLabel>Какие активности вы назначите себе?</ng-template>
+      <app-training-selection *ngFor="let training of trainings" [training]="training"
+                              [durationDiscountOptions]="durationDiscountOptions"
+                              [frequencyDiscountOptions]="frequencyDiscountOptions"
+                              (trainingEvent)="processTrainingSelectionEvent($event)">
+
+      </app-training-selection>
+      <div>
+        <button mat-button matStepperNext>ДАЛЬШЕ</button>
+      </div>
+ </mat-step>
+  <mat-step>
+      <ng-template matStepLabel>Проверьте ваш выбор, пожалуйста</ng-template>
+      <h3>Отчет</h3>
+      <app-report></app-report>
+      <div class="stepper-button">
+        <button mat-button matStepperPrevious>ВЕРНУТЬСЯ</button>
+      </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Отправьте заказ для получения занятий</ng-template>
+    <h3>Отправить</h3>
+    <app-submit></app-submit>
+    <div class="stepper-button">
+      <button mat-button matStepperPrevious>ВЕРНУТЬСЯ</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

@@ -1,0 +1,16 @@
+.card {
+  width: 15rem;
+  display: inline-block;
+  margin: 1em;
+}
+.card-title {
+  font-weight: bold;
+  /*font-size: larger;*/
+}
+.card-text-solid {
+  font-weight: bold;
+}
+.material-icons.md-18 {
+  font-size: 18px;
+  cursor: pointer;
+}

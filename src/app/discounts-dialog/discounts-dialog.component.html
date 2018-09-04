@@ -1,0 +1,53 @@
+<h1 mat-dialog-title>Cкидки</h1>
+<div mat-dialog-content>
+  <h4>За колличетво занятий в неделю</h4>
+  <div class="example-container mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSourceFrequency">
+
+      <!-- Frequency Column -->
+      <ng-container matColumnDef="frequency">
+        <mat-header-cell *matHeaderCellDef> Частота занятий (раз в неделю) </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.value}} </mat-cell>
+      </ng-container>
+
+      <!-- Duration Column -->
+      <ng-container matColumnDef="rate">
+        <mat-header-cell *matHeaderCellDef> Скидка, % </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.rate}} </mat-cell>
+      </ng-container>
+
+
+
+      <mat-header-row *matHeaderRowDef="['frequency', 'rate']"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: ['frequency', 'rate'];"></mat-row>
+    </mat-table>
+  </div>
+
+
+  <h4>За продолжительность</h4>
+  <div class="example-container mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSourceDuration">
+
+      <!-- Frequency Column -->
+      <ng-container matColumnDef="frequency">
+        <mat-header-cell *matHeaderCellDef> Продолжительность занятий (месяцы) </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.value}} </mat-cell>
+      </ng-container>
+
+      <!-- Duration Column -->
+      <ng-container matColumnDef="rate">
+        <mat-header-cell *matHeaderCellDef> Скидка, % </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.rate}} </mat-cell>
+      </ng-container>
+
+
+
+      <mat-header-row *matHeaderRowDef="['frequency', 'rate']"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: ['frequency', 'rate'];"></mat-row>
+    </mat-table>
+  </div>
+  <p><span class="text-solid">Внимание!</span> На все тренинги выбранные вместе с "Tренировка GraVitiYoga в группе" дополнительная скидка - <span class="text-solid">30%</span></p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="close()">ЗАКРЫТЬ</button>
+</div>

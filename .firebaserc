@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "staging": "gravity-yoga",
+    "default": "gravity-yoga"
+  }
+}

@@ -1,0 +1,95 @@
+<h4>Выбранные уроки</h4>
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource">
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Название тренинга </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.training.name}} </mat-cell>
+    </ng-container>
+
+    <!-- Frequency Column -->
+    <ng-container matColumnDef="frequency">
+      <mat-header-cell *matHeaderCellDef> Частота занятий (раз в месяц) </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.frequencySelected.value}} </mat-cell>
+    </ng-container>
+
+    <!-- Duration Column -->
+    <ng-container matColumnDef="duration">
+      <mat-header-cell *matHeaderCellDef> На сколько месяцев вы берете курс </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.durationSelected.value}} </mat-cell>
+    </ng-container>
+
+    <!-- price Column -->
+    <ng-container matColumnDef="price">
+      <mat-header-cell *matHeaderCellDef> Стоимость базовая </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.training.price}} </mat-cell>
+    </ng-container>
+
+    <!-- Total Discount Column -->
+    <ng-container matColumnDef="total-discount">
+      <mat-header-cell *matHeaderCellDef> Суммарная скидка </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.summary.totalDiscountPersents}} %</mat-cell>
+    </ng-container>
+
+    <!-- Discounted Price Column -->
+    <ng-container matColumnDef="discounted-price">
+      <mat-header-cell *matHeaderCellDef> Стоимость со скидкой </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.training.price - element.summary.totalDiscountCurrency }} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="['name', 'frequency', 'duration', 'price', 'total-discount', 'discounted-price']"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: ['name', 'frequency', 'duration', 'price', 'total-discount', 'discounted-price'];"></mat-row>
+  </mat-table>
+</div>
+
+<h4>Цена, скидка, стоимость</h4>
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Название выбранной программы занятий </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.training.name}} шк.</mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="totalPrice">
+      <mat-header-cell *matHeaderCellDef> Полная стоимость программы </mat-header-cell>
+      <!--Four week a month-->
+      <mat-cell *matCellDef="let element"> {{ element.summary.totalPriceForAllTrainings }} шк.</mat-cell>
+    </ng-container>
+
+    <!-- Frequency Column -->
+    <ng-container matColumnDef="totalDiscount">
+      <mat-header-cell *matHeaderCellDef> Ваша скидка </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.summary.totalDiscountForAllTrainings }} шк.</mat-cell>
+    </ng-container>
+
+    <!-- Duration Column -->
+    <ng-container matColumnDef="totalPriceWithDiscount">
+      <mat-header-cell *matHeaderCellDef> Стоимость для вас </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.summary.totalPriceForAllTrainings - element.summary.totalDiscountForAllTrainings }} шк.</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="['name', 'totalPrice', 'totalDiscount', 'totalPriceWithDiscount']"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: ['name', 'totalPrice', 'totalDiscount', 'totalPriceWithDiscount'];"></mat-row>
+  </mat-table>
+</div>
+
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="totalDataSource">
+
+    <ng-container matColumnDef="title">
+       <mat-cell *matCellDef="let element"> Итого, полная стоимость программы для вас </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="total">
+      <mat-cell *matCellDef="let element"> {{element.totalPrice - element.totalDiscount}} шк.</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="[]"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: ['title', 'total'];"></mat-row>
+  </mat-table>
+</div>
+
